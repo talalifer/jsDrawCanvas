@@ -8,7 +8,7 @@ function drawOnCanvas(canvas) {
     //Get drawing context from the canvas element
     const ctx = canvas.getContext("2d");
 
-    //Add event listeners for when mouse is clicked in canvas
+    //Event Listener for when mouse is clicked in canvas
     canvas.addEventListener("mousedown",
                             //Record the current mouse position and set isDraw to True
                             ev => {
@@ -17,10 +17,21 @@ function drawOnCanvas(canvas) {
                                 isDrawing = true;
                             });
     
-    //Add an event listener for when mouse is unclicked in the window
+    //Event Listener for when mouse moves in canvas
+    canvas.addEventListener('mousemove', 
+                            ev => {
+                                if (isDrawing == true){
+                                    //Draw line from previous mouse position to current mouse position
+                                    drawLine(ctx, x, y, ev.offsetX, ev.offsetY)
+                                    //update mouse position
+                                    x = ev.offsetX;
+                                    y = ev.offsetY;
+                                }
+                            });
+
+    //Event Listener for when mouse is unclicked in the window
     window.addEventListener("mouseup",
                             ev => {
-                                //If user was drawing, isDrawing == true
                                 if (isDrawing == true){
                                     //Draw a line from the previous ouse position to the current mouse position
                                     drawLine(ctx, x, y, ev.offsetX, ev.offsetY);
@@ -31,4 +42,14 @@ function drawOnCanvas(canvas) {
                                 }
                             });
     
+    //helper function to draw line between points
+    function drawLine(ctx, x1, y1, x2, y2){
+        ctx.beginPath();
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 25;
+        ctx.lineCap = "round";
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.closePath();
+    }
 }
