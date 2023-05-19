@@ -50,6 +50,13 @@ function drawOnCanvas(canvas) {
         ctx.lineCap = "round";
         ctx.moveTo(x1, y1);
         ctx.lineTo(x2, y2);
+        ctx.stroke();
         ctx.closePath();
     }
+}
+
+//function to clear a canvas
+function clearCanvas(canvas){
+    const canvElement = canvas.getContext("2d");
+    canvElement.clearRect(0,0,canvas.width, canvas.height);
 }
