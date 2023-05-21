@@ -53,10 +53,20 @@ function drawOnCanvas(canvas) {
         ctx.stroke();
         ctx.closePath();
     }
-}
+};
+
+drawOnCanvas(document.getElementById("myCanvas"));
 
 //function to clear a canvas
 function clearCanvas(canvas){
     const canvElement = canvas.getContext("2d");
     canvElement.clearRect(0,0,canvas.width, canvas.height);
+};
+
+//function to resize canvas
+function reSizeCanvas(origCanvas, resizedCanvas){
+    const canv1 = origCanvas.getContext("2d");
+    const canv2 = resizedCanvas.getContext("2d");
+
+    canv2.drawImage(origCanvas, 0, 0, 280, 280, 0, 0, 28, 28);
 }

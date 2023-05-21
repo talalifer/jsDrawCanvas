@@ -10,10 +10,14 @@
     </p>
     <br>
     <canvas id="myCanvas" width="280" height="280"></canvas>
+    <canvas id="myCanvas2" width="28" height="28"></canvas>
     <br>
-    <button onclick="clearCanvas(myCanvas)">Clear</button>
+    <button onclick="clearCanvas(myCanvas); clearCanvas(myCanvas2)">Clear</button>
+    <br>
+    <button onclick="reSizeCanvas(myCanvas, myCanvas2)">Resize</button>
+    
     <script src="script.js">
-        drawOnCanvas(document.getElementById("myCanvas"));
+        
     </script>
 </body>
 
