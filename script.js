@@ -65,8 +65,6 @@ function clearCanvas(canvas){
 
 //function to resize canvas
 function reSizeCanvas(origCanvas, resizedCanvas){
-    const canv1 = origCanvas.getContext("2d");
     const canv2 = resizedCanvas.getContext("2d");
-
     canv2.drawImage(origCanvas, 0, 0, 280, 280, 0, 0, 28, 28);
 }
